@@ -1,2 +1,2 @@
-# Android-Sample-Projects
+# Android-Samples
 The samples are packed in this Projects
