@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Android Samples</string>
+    <string name="test_button">Test Button</string>
+    <string name="button_pressed">Button pressed</string>
+    <string name="button_isOn">Button is On</string>
+    <string name="button_isOff">Button is Off</string>
+    <string name="count_button">Count Button</string>
+    <string name="reset">Reset</string>
+    <string name="count">Count: </string>
+    <string name="go">GO</string>
+    <string name="input_string">文字を入れてね</string>
+    <string name="input_error">文字を入れてねって言ったでしょうが！！！</string>
+    <string name="sorry">ごめんなさい</string>
+    <string name="result_string">と入力されました。</string>
+    <string name="add">追加</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="favourite">Favourite</string>
+    <string name="image">Image</string>
+
+    <string name="recyclerView_sample">RecyclerView Sample</string>
+    <string name="count_sample">Count Sample</string>
+    <string name="editor_sample">Editor Sample</string>
+    <string name="bottom_navigation_sample">BottomNavigation Sample</string>
+    <string name="imageView_sample">ImageView Sample</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

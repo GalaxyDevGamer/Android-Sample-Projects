@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeTab"
+        android:title="@string/home"
+        android:icon="@mipmap/baseline_home_black_48"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/historyTab"
+        android:title="@string/history"
+        android:icon="@mipmap/baseline_history_black_48"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/favouriteTab"
+        android:title="@string/favourite"
+        android:icon="@mipmap/baseline_favorite_black_48"
+        app:showAsAction="ifRoom" />
+</menu>
