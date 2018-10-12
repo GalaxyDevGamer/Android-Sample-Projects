@@ -32,6 +32,7 @@ class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
         samples.add(FragmentType.EDITOR_SAMPLE)
         samples.add(FragmentType.IMAGE_VIEW_SAMPLE)
         samples.add(FragmentType.BOTTOM_NAVIGATION_SAMPLE)
+        samples.add(FragmentType.WEBVIEW_SAMPLE)
         sampleAdapter = RecyclerViewSampleAdapter(samples, this)
         setHasOptionsMenu(true)
     }

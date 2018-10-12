@@ -18,6 +18,8 @@
     <string name="history">History</string>
     <string name="favourite">Favourite</string>
     <string name="image">Image</string>
+    <string name="go_back">Go Back</string>
+    <string name="go_forward">Go Forward</string>
 
     <string name="recyclerView_sample">RecyclerView Sample</string>
     <string name="count_sample">Count Sample</string>

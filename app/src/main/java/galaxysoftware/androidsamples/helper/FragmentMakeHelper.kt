@@ -11,6 +11,7 @@ class FragmentMakeHelper {
             FragmentType.EDITOR_SAMPLE -> EditorSampleFragment.newInstance()
             FragmentType.BOTTOM_NAVIGATION_SAMPLE -> BottomNavigationFragment.newInstance()
             FragmentType.IMAGE_VIEW_SAMPLE -> ImageViewSampleFragment.newInstance()
+            FragmentType.WEBVIEW_SAMPLE -> WebViewSampleFragment.newInstance()
         }
     }
 }

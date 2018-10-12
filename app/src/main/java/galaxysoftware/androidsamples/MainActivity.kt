@@ -7,6 +7,7 @@ import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import galaxysoftware.androidsamples.application.App
+import galaxysoftware.androidsamples.fragment.WebViewSampleFragment
 import galaxysoftware.androidsamples.helper.FragmentMakeHelper
 import galaxysoftware.androidsamples.type.FragmentType
 import galaxysoftware.androidsamples.type.NavigationType
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     //Fragmentを入れとく用
     private var fragmentHistory = ArrayList<Fragment>()
     private var fragmentTypeHistory = ArrayList<FragmentType>()
+
+    lateinit var searchBar: SearchView
 
     /**
      * 本当はToolbarもFragmentに移したいのだが、ToolbarをActionBarとして扱う設定はここ以外でするべきじゃ無いのだ。(というかできん
@@ -50,6 +53,13 @@ class MainActivity : AppCompatActivity() {
      * Remove Fragment
      */
     private fun backFragment() {
+        if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE) {
+            val fragment = fragmentHistory[fragmentHistory.size-1] as WebViewSampleFragment
+            if (fragment.canGoBack()) {
+                fragment.goBack()
+                return
+            }
+        }
         if (fragmentHistory.size == 1) {
             finish()
             return
@@ -63,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Get current fragment type from history list
      */
-    private fun getCurrentFragmentType() = fragmentTypeHistory[fragmentTypeHistory.size-1]
+    private fun getCurrentFragmentType() = fragmentTypeHistory[fragmentTypeHistory.size - 1]
 
     /**
      * Update Toolbar
@@ -90,17 +100,20 @@ class MainActivity : AppCompatActivity() {
         invalidateOptionsMenu()
     }
 
+    fun setURL(url: String) {
+        searchBar.setQuery(url, false)
+    }
+
     /**
      * Updating menu
      */
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         menu?.clear()
-        if (getCurrentFragmentType() != FragmentType.RECYCLER_VIEW_SAMPLE)
-            menuInflater.inflate(fragmentTypeHistory[fragmentTypeHistory.size - 1].menu, menu)
-        else {
-            menuInflater.inflate(R.menu.main, menu)
-            (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
-                isIconified = true /**ここをfalseにすると検索バーみたいに出しておける**/
+        menuInflater.inflate(fragmentTypeHistory[fragmentTypeHistory.size - 1].menu, menu)
+        if (getCurrentFragmentType() == FragmentType.RECYCLER_VIEW_SAMPLE || getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
+            searchBar = (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
+                isIconified = getCurrentFragmentType() != FragmentType.WEBVIEW_SAMPLE
+                /**ここをfalseにすると検索バーみたいに出しておける**/
                 queryHint = getString(R.string.search)
                 clearFocus()
                 setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -109,11 +122,14 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onQueryTextSubmit(query: String?): Boolean {
+                        if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
+                            (fragmentHistory[fragmentHistory.size-1] as WebViewSampleFragment).search(query!!)
                         return false
                     }
                 })
+                if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
+                    setQuery("https://google.com", true)
             }
-        }
         return super.onPrepareOptionsMenu(menu)
     }
 
