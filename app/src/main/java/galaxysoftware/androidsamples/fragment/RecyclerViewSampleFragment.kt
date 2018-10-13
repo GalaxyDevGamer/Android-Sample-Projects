@@ -24,7 +24,6 @@ class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
     private lateinit var sampleAdapter: RecyclerViewSampleAdapter
     private var samples = ArrayList<FragmentType>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +46,12 @@ class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
         recycler_view.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = sampleAdapter
+        }
+        refresh_list.setOnRefreshListener {
+            //Refresh items
+
+            sampleAdapter.notifyDataSetChanged()
+            refresh_list.isRefreshing = false
         }
     }
 
