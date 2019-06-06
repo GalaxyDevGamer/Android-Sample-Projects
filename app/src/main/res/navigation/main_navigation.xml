@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/recyclerViewSampleFragment">
+    <fragment
+        android:id="@+id/recyclerViewSampleFragment"
+        android:name="galaxysoftware.androidsamples.fragment.RecyclerViewSampleFragment"
+        android:label="recyclerview_layout"
+        tools:layout="@layout/recyclerview_layout" >
+        <action
+            android:id="@+id/action_recyclerViewSampleFragment_to_countSampleFragment"
+            app:destination="@id/countSampleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/recyclerViewSampleFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_recyclerViewSampleFragment_to_editorSampleFragment"
+            app:destination="@id/editorSampleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/recyclerViewSampleFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_recyclerViewSampleFragment_to_imageViewSampleFragment"
+            app:destination="@id/imageViewSampleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/recyclerViewSampleFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_recyclerViewSampleFragment_to_bottomNavigationFragment"
+            app:destination="@id/bottomNavigationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/recyclerViewSampleFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_recyclerViewSampleFragment_to_webViewSampleFragment"
+            app:destination="@id/webViewSampleFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/recyclerViewSampleFragment"
+            app:popUpToInclusive="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/countSampleFragment"
+        android:name="galaxysoftware.androidsamples.fragment.CountSampleFragment"
+        android:label="counter_layout"
+        tools:layout="@layout/counter_layout" />
+    <fragment
+        android:id="@+id/editorSampleFragment"
+        android:name="galaxysoftware.androidsamples.fragment.EditorSampleFragment"
+        android:label="editor_layout"
+        tools:layout="@layout/editor_layout" />
+    <fragment
+        android:id="@+id/imageViewSampleFragment"
+        android:name="galaxysoftware.androidsamples.fragment.ImageViewSampleFragment"
+        android:label="imageview_layout"
+        tools:layout="@layout/imageview_layout" />
+    <fragment
+        android:id="@+id/bottomNavigationFragment"
+        android:name="galaxysoftware.androidsamples.fragment.BottomNavigationFragment"
+        android:label="bottom_navigation_layout"
+        tools:layout="@layout/bottom_navigation_layout" />
+    <fragment
+        android:id="@+id/webViewSampleFragment"
+        android:name="galaxysoftware.androidsamples.fragment.WebViewSampleFragment"
+        android:label="webview_layout"
+        tools:layout="@layout/webview_layout" />
+</navigation>

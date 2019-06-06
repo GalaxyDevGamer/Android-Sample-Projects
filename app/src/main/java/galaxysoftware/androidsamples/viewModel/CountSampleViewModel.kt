@@ -1,6 +1,6 @@
 package galaxysoftware.androidsamples.viewModel
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 class CountSampleViewModel : ViewModel() {
     // TODO: Implement the ViewModel

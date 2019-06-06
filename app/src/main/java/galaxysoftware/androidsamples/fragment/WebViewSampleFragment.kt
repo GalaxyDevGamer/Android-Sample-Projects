@@ -1,8 +1,8 @@
 package galaxysoftware.androidsamples.fragment
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ import galaxysoftware.androidsamples.application.App
 import galaxysoftware.androidsamples.viewModel.WebViewSampleViewModel
 import kotlinx.android.synthetic.main.webview_layout.*
 
-class WebViewSampleFragment : Fragment() {
+class WebViewSampleFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() = WebViewSampleFragment()
@@ -62,9 +62,11 @@ class WebViewSampleFragment : Fragment() {
                 updateURL()
             }
         }
+        search.setOnClickListener { search(search_bar.text.toString()) }
+        search("https://google.com")
     }
 
-    fun search(url: String) = webView.loadUrl(url)
+    private fun search(url: String) = webView.loadUrl(url)
 
     fun updateURL() = (activity?.application as App).mainActivity?.setURL(webView.url)
 

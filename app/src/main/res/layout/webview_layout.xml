@@ -11,7 +11,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/search_bar"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="@string/search"
+                android:inputType="textAutoComplete"
+                android:background="#FFFFFF"/>
+
+            <ImageButton
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_search_24"
+                android:background="#FFFFFF"/>
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/reloadWebView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -21,9 +44,9 @@
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
@@ -42,6 +65,6 @@
                 android:background="#FFFFFF"
                 android:contentDescription="@string/go_forward"
                 android:src="@mipmap/baseline_keyboard_arrow_right_black_48" />
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
     </LinearLayout>
 </FrameLayout>

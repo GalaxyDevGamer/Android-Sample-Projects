@@ -1,8 +1,8 @@
 package galaxysoftware.androidsamples.fragment
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,7 @@ import galaxysoftware.androidsamples.R
 import galaxysoftware.androidsamples.viewModel.CountSampleViewModel
 import kotlinx.android.synthetic.main.counter_layout.*
 
-class CountSampleFragment : Fragment() {
+class CountSampleFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() = CountSampleFragment()

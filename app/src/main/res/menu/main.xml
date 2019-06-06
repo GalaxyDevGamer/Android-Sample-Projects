@@ -6,7 +6,7 @@
         android:id="@+id/search"
         android:icon="@mipmap/baseline_search_black_48"
         android:title="@string/search"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
 
     <item

@@ -1,11 +1,13 @@
 package galaxysoftware.androidsamples.fragment
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import galaxysoftware.androidsamples.R
 import galaxysoftware.androidsamples.adapter.RecyclerViewSampleAdapter
 import galaxysoftware.androidsamples.application.App
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main.recyclerview_layout.*
  * Activities containing this fragment MUST implement the
  * [ItemClickListener] interface.
  */
-class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
+class RecyclerViewSampleFragment : androidx.fragment.app.Fragment(), ItemClickListener {
 
     private lateinit var sampleAdapter: RecyclerViewSampleAdapter
     private var samples = ArrayList<FragmentType>()
@@ -36,10 +38,7 @@ class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.recyclerview_layout, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.recyclerview_layout, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,8 +54,8 @@ class RecyclerViewSampleFragment : Fragment(), ItemClickListener {
         }
     }
 
-    override fun onItemSelected(fragmentType: FragmentType) {
-        (activity?.application as App).mainActivity?.addFragment(fragmentType)
+    override fun onItemSelected(index: Int) {
+        findNavController().navigate(samples[index].directions)
     }
 
     companion object {
