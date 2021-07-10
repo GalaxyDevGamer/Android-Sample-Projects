@@ -2,17 +2,17 @@
 
 buildscript {
     ext {
-        android_version = 28
+        android_version = 30
 
-        support_library = "28.0.0"
+        support_library = "30.0.0"
         constraint = "1.1.3"
-        kotlin = "1.3.31"
+        kotlin = '1.4.20'
         realm = "5.4.0"
         gms = "4.0.1"
         firebase_core = "16.0.8"
         firestore = "18.2.0"
         auth = "16.2.1"
-        navigation = "1.0.0"
+        navigation = "2.3.2"
         coroutines = "1.1.1"
     }
 
@@ -21,13 +21,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0-beta02'
+        classpath 'com.android.tools.build:gradle:4.1.3'
 
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin"
-        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigation"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
     }
 }
 

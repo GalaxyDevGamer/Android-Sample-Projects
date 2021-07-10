@@ -1,11 +1,10 @@
 package galaxysoftware.androidsamples
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import android.view.Menu
-import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,9 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import galaxysoftware.androidsamples.application.App
 import galaxysoftware.androidsamples.fragment.WebViewSampleFragment
-import galaxysoftware.androidsamples.helper.FragmentMakeHelper
 import galaxysoftware.androidsamples.type.FragmentType
-import galaxysoftware.androidsamples.type.NavigationType
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -25,10 +22,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     //Fragmentを入れとく用
-    private var fragmentHistory = ArrayList<androidx.fragment.app.Fragment>()
+    private var fragmentHistory = ArrayList<Fragment>()
     private var fragmentTypeHistory = ArrayList<FragmentType>()
 
-    lateinit var searchBar: SearchView
+    private lateinit var searchBar: SearchView
 
     private lateinit var navController: NavController
 
@@ -51,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp() = navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
-    override fun onOptionsItemSelected(item: MenuItem?) =  item!!.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =  item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
 
     /**
      * Add Fragment. Choose the fragment you want to add from FragmentType

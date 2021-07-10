@@ -20,9 +20,7 @@ class CountSampleFragment : androidx.fragment.app.Fragment() {
     private lateinit var viewModel: CountSampleViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.counter_layout, container, false)
-    }
+                              savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.counter_layout, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

@@ -20,9 +20,7 @@ class BottomNavigationFragment : androidx.fragment.app.Fragment() {
     private lateinit var viewModel: BottomNavigationViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.bottom_navigation_layout, container, false)
-    }
+                              savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.bottom_navigation_layout, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
