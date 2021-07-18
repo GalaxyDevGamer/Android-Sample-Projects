@@ -1,4 +1,4 @@
-package galaxysoftware.androidsamples;
+package galaxysoftware.androidTraining;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("galaxysoftware.androidsamples", appContext.getPackageName());
+        assertEquals("galaxysoftware.androidTraining", appContext.getPackageName());
     }
 }

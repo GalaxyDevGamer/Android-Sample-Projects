@@ -12,21 +12,21 @@ buildscript {
         firebase_core = "16.0.8"
         firestore = "18.2.0"
         auth = "16.2.1"
-        navigation = "2.3.2"
+        navigation = "2.3.5"
         coroutines = "1.1.1"
     }
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'com.android.tools.build:gradle:4.2.2'
 
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21"
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0"
     }
 }
@@ -34,7 +34,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

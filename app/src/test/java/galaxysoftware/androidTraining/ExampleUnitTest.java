@@ -1,4 +1,4 @@
-package galaxysoftware.androidsamples;
+package galaxysoftware.androidTraining;
 
 import org.junit.Test;
 

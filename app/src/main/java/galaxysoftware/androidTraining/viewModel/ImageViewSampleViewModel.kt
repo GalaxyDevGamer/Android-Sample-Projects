@@ -1,4 +1,4 @@
-package galaxysoftware.androidsamples.viewModel
+package galaxysoftware.androidTraining.viewModel
 
 import androidx.lifecycle.ViewModel;
 

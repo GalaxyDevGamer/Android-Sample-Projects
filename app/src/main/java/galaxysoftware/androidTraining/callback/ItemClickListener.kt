@@ -1,4 +1,4 @@
-package galaxysoftware.androidsamples.callback
+package galaxysoftware.androidTraining.callback
 
 interface ItemClickListener {
     fun onItemSelected(index: Int)

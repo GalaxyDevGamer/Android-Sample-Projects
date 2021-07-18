@@ -1,20 +1,15 @@
-package galaxysoftware.androidsamples
+package galaxysoftware.androidTraining
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
-import galaxysoftware.androidsamples.application.App
-import galaxysoftware.androidsamples.fragment.WebViewSampleFragment
-import galaxysoftware.androidsamples.type.FragmentType
-import kotlinx.android.synthetic.main.activity_main.*
+import galaxysoftware.androidTraining.databinding.ActivityMainBinding
 
 /**
  * ほとんどのサンプルは各々のFragmentに分散してあるが、Toolbarだけは仕様上Activityでしか設定できんので、ここにはToolbarも含む
@@ -22,33 +17,35 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     //Fragmentを入れとく用
-    private var fragmentHistory = ArrayList<Fragment>()
-    private var fragmentTypeHistory = ArrayList<FragmentType>()
-
-    private lateinit var searchBar: SearchView
+//    private var fragmentHistory = ArrayList<Fragment>()
+//    private var fragmentTypeHistory = ArrayList<FragmentType>()
 
     private lateinit var navController: NavController
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+
+    private lateinit var binding: ActivityMainBinding
 
     /**
      * 本当はToolbarもFragmentに移したいのだが、ToolbarをActionBarとして扱う設定はここ以外でするべきじゃ無いのだ。(というかできん
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        (application as App).mainActivity = this
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navGraph = navController.graph)
-        NavigationUI.setupWithNavController(toolbar, navController)
+        NavigationUI.setupWithNavController(binding.toolbar, navController)
         /**まだRecyclerViewについては教えてないけど、こっちの方が見やすいから。後から教える**/
 //        addFragment(FragmentType.RECYCLER_VIEW_SAMPLE)
     }
 
-    override fun onSupportNavigateUp() = navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    override fun onSupportNavigateUp() =
+        navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean =  item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
 
     /**
      * Add Fragment. Choose the fragment you want to add from FragmentType
@@ -66,57 +63,28 @@ class MainActivity : AppCompatActivity() {
     /**
      * Remove Fragment
      */
-    private fun backFragment() {
-        if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE) {
-            val fragment = fragmentHistory[fragmentHistory.size-1] as WebViewSampleFragment
-            if (fragment.canGoBack()) {
-                fragment.goBack()
-                return
-            }
-        }
-        if (fragmentHistory.size == 1) {
-            finish()
-            return
-        }
-        supportFragmentManager.beginTransaction().remove(fragmentHistory[fragmentHistory.size - 1]).commit()
-        fragmentHistory.removeAt(fragmentHistory.size - 1)
-        fragmentTypeHistory.removeAt(fragmentTypeHistory.size - 1)
-        updateToolbar()
-    }
+//    private fun backFragment() {
+//        if (getCurrentFragmentType() == FragmentType.WEB_VIEW_SAMPLE) {
+//            val fragment = fragmentHistory[fragmentHistory.size - 1] as WebViewSampleFragment
+//            if (fragment.canGoBack()) {
+//                fragment.goBack()
+//                return
+//            }
+//        }
+//        if (fragmentHistory.size == 1) {
+//            finish()
+//            return
+//        }
+//        supportFragmentManager.beginTransaction().remove(fragmentHistory[fragmentHistory.size - 1])
+//            .commit()
+//        fragmentHistory.removeAt(fragmentHistory.size - 1)
+//        fragmentTypeHistory.removeAt(fragmentTypeHistory.size - 1)
+//    }
 
     /**
      * Get current fragment type from history list
      */
-    private fun getCurrentFragmentType() = fragmentTypeHistory[fragmentTypeHistory.size - 1]
-
-    /**
-     * Update Toolbar
-     */
-    private fun updateToolbar() {
-        toolbar.apply {
-            if (fragmentTypeHistory.size == 0) {
-                navigationIcon = null
-                setNavigationOnClickListener(null)
-                return
-            }
-//            when (fragmentTypeHistory[fragmentTypeHistory.size - 1].navigation) {
-//                NavigationType.BACK -> {
-//                    navigationIcon = getDrawable(R.mipmap.baseline_keyboard_arrow_left_black_24)
-//                    setNavigationOnClickListener { backFragment() }
-//                }
-//                NavigationType.NONE -> {
-//                    navigationIcon = null
-//                    setNavigationOnClickListener(null)
-//                }
-//            }
-            title = fragmentTypeHistory[fragmentTypeHistory.size - 1].title
-        }
-        invalidateOptionsMenu()
-    }
-
-    fun setURL(url: String) {
-        searchBar.setQuery(url, false)
-    }
+//    private fun getCurrentFragmentType() = fragmentTypeHistory[fragmentTypeHistory.size - 1]
 
     /**
      * Updating menu
@@ -126,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 //        menuInflater.inflate(fragmentTypeHistory[fragmentTypeHistory.size - 1].menu, menu)
 //        if (getCurrentFragmentType() == FragmentType.RECYCLER_VIEW_SAMPLE || getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
 //            searchBar = (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
-//                isIconified = getCurrentFragmentType() != FragmentType.WEBVIEW_SAMPLE
+//                isIconified = getCurrentFragmentType() != FragmentType.WEB_VIEW_SAMPLE
 //                /**ここをfalseにすると検索バーみたいに出しておける**/
 //                queryHint = getString(R.string.search)
 //                clearFocus()
@@ -136,30 +104,14 @@ class MainActivity : AppCompatActivity() {
 //                    }
 //
 //                    override fun onQueryTextSubmit(query: String?): Boolean {
-//                        if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
+//                        if (getCurrentFragmentType() == FragmentType.WEB_VIEW_SAMPLE)
 //                            (fragmentHistory[fragmentHistory.size-1] as WebViewSampleFragment).search(query!!)
 //                        return false
 //                    }
 //                })
-//                if (getCurrentFragmentType() == FragmentType.WEBVIEW_SAMPLE)
+//                if (getCurrentFragmentType() == FragmentType.WEB_VIEW_SAMPLE)
 //                    setQuery("https://google.com", true)
 //            }
 //        return super.onPrepareOptionsMenu(menu)
 //    }
-
-    /**
-     * On MenuItem clicked
-     */
-//    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-//        when (item?.itemId) {
-//            R.id.add -> {
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-
-    /**
-     * Backキーが押された時のコールバック乗っ取り
-     */
-    override fun onBackPressed() = backFragment()
 }

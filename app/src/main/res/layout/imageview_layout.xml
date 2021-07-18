@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".fragment.ImageViewSampleFragment">
+    tools:context="galaxysoftware.androidTraining.fragment.ImageViewSampleFragment">
 
     <ImageView
         android:id="@+id/image"
@@ -19,7 +19,7 @@
         android:src="@drawable/my_wife" />
 
     <ImageButton
-        android:id="@+id/do_something"
+        android:id="@+id/doSomething"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
